@@ -50,7 +50,7 @@ def select_course(message):
 
 @bot.message_handler(func=lambda message: message.text == "1 курс")
 def onegroup(message):
-    buttons = groups.buttons
+    buttons = groups.buttons_course_1
     markup = types.InlineKeyboardMarkup()
     for index, button_text in enumerate(buttons, start=1):
         button = types.InlineKeyboardButton(button_text, callback_data=str(index))
