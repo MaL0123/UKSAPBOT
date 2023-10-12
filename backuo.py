@@ -82,6 +82,8 @@ def onegroup(message):
     markup.add(A1239, A2239, A3239, D1239, D2239, D3239, C1239, C2239, ZM1239, ZM2239, IS1239, IS2239, M1239, TG1239, TG2239, L1239, ED12311)
     bot.send_message(message.chat.id, text="Выбери свою группу 1 курса", reply_markup=markup)
 
+# something new
+
 
 def get_data(call, r_num, sheet_name):
     data = read_excel_file('C:\\Users\\Observer\\Desktop\\TelegramBot\\rasp.xlsx', sheet_name)
