@@ -5,7 +5,6 @@ from telebot import types
 from openpyxl import load_workbook
 import groups
 
-#GFMKDFSLDFSDFSKDJF
 
 bot_token = "6497800204:AAFzMDXRKLX6DmYeaWIhYKSrTksTj1fQwaM"  # Replace YOUR_TOKEN_HERE with your actual bot token
 bot = telebot.TeleBot(bot_token)
