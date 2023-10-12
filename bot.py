@@ -24,7 +24,7 @@ def read_excel_file(file_path, sheet_name):
     return data
 
 def back_to_start(message):
-    bot.send_message(message.chat.id, "Going back to start...")
+    bot.send_message(message.chat.id, "Вернёмся к началу...")
     start(message)
 
 @bot.message_handler(commands=['start'])
@@ -58,6 +58,51 @@ def onegroup(message):
 
     bot.send_message(message.chat.id, text="Выбери свою группу 1 курса", reply_markup=markup)
 
+@bot.message_handler(func=lambda message: message.text == "2 курс")
+def onegroup(message):
+
+    buttons = groups.buttons_course_2
+    markup = types.InlineKeyboardMarkup()
+    for index, button_text in enumerate(buttons, start=1):
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 21))
+        markup.add(button)
+
+    bot.send_message(message.chat.id, text="Выбери свою группу 2 курса", reply_markup=markup)
+
+@bot.message_handler(func=lambda message: message.text == "3 курс")
+def onegroup(message):
+
+    buttons = groups.buttons_course_3
+    markup = types.InlineKeyboardMarkup()
+    for index, button_text in enumerate(buttons, start=1):
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 43))
+        markup.add(button)
+
+    bot.send_message(message.chat.id, text="Выбери свою группу 3 курса", reply_markup=markup)
+
+@bot.message_handler(func=lambda message: message.text == "4 курс")
+def onegroup(message):
+
+    buttons = groups.buttons_course_4
+    markup = types.InlineKeyboardMarkup()
+    for index, button_text in enumerate(buttons, start=1):
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 63))
+        markup.add(button)
+        print(index + 63) 
+
+    bot.send_message(message.chat.id, text="Выбери свою группу 4 курса", reply_markup=markup)
+
+@bot.message_handler(func=lambda message: message.text == "5 курс")
+def onegroup(message):
+
+    buttons = groups.buttons_course_5
+    markup = types.InlineKeyboardMarkup()
+    for index, button_text in enumerate(buttons, start=1):
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 77))
+        markup.add(button)
+
+    bot.send_message(message.chat.id, text="Выбери свою группу 5 курса", reply_markup=markup)
+
 @bot.callback_query_handler(func=lambda call: True)
 def on_day_group_selected(call):
     if call.data == "back":
@@ -65,7 +110,7 @@ def on_day_group_selected(call):
     else:
         global msg_txt
         sheet_name = msg_txt
-        r_num = int(call.data) - 1
+        r_num = int(call.data) - 1 + 1
         data = read_excel_file('C:\\Users\\Observer\\Desktop\\TelegramBot\\rasp.xlsx', sheet_name)
         current_data = data[r_num] 
         current_data_string = "\n\n".join(map(str, current_data))
