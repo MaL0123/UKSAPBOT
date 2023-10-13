@@ -84,7 +84,7 @@ def on_day_group_selected(call):
         data = read_excel_file(FILE_PATH, sheet_name)
         current_data = data[r_num] 
         current_data_string = "\n\n".join(map(str, current_data))
-        back_button = types.InlineKeyboardButton("Back", callback_data="back")
+        back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         markup = types.InlineKeyboardMarkup()
         markup.row(back_button)
         bot.send_message(call.message.chat.id, text=f"The data is:\n{current_data_string}", reply_markup=markup)
