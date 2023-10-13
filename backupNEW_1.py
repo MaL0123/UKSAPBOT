@@ -39,13 +39,16 @@ def start(message):
     bot.register_next_step_handler(message, callback=select_course)
     
 
-@bot.message_handler(func=lambda message: message.text in ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"])
-def select_course(message):
-    global msg_txt
-    msg_txt = message.text
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("1 курс", "2 курс", "3 курс", "4 курс", "5 курс")
-    bot.send_message(message.chat.id, text="Привет, Я бот для просмотра расписания.\n\nКакой у тебя курс?", reply_markup=markup)
+@bot.message_handler(content_types=['text'])
+if message.text == "понидельник" or "вторник" or "среда" or "четверг" or "пятница" or "суббота":
+    def select_course(message):
+        global msg_txt
+        msg_txt = message.text
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        markup.add("1 курс", "2 курс", "3 курс", "4 курс", "5 курс")
+        bot.send_message(message.chat.id, text="Привет, Я бот для просмотра расписания.\n\nКакой у тебя курс?", reply_markup=markup)
+else:
+    bot.send_message(message.from_user.id, "Извините, я Вас не понимаю")
     
 
 

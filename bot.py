@@ -111,7 +111,7 @@ def on_day_group_selected(call):
         global msg_txt
         sheet_name = msg_txt
         r_num = int(call.data) - 1 + 1
-        data = read_excel_file('C:\\Users\\Observer\\Desktop\\uksap_bot\\UKSAP\\rasp.xlsx', sheet_name)
+        data = read_excel_file('C:\\Users\\Observer\\Desktop\\uksap_bot\\UKSAPBOT\\rasp.xlsx', sheet_name)
         current_data = data[r_num] 
         current_data_string = "\n\n".join(map(str, current_data))
         back_button = types.InlineKeyboardButton("Back", callback_data="back")
@@ -120,3 +120,5 @@ def on_day_group_selected(call):
         bot.send_message(call.message.chat.id, text=f"The data is:\n{current_data_string}", reply_markup=markup)
 
 bot.polling()
+
+#DSA
