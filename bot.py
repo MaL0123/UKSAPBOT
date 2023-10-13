@@ -1,17 +1,14 @@
-import os
-import sys
 import telebot
 from telebot import types
 from openpyxl import load_workbook
 import groups
 from groupsButton import *
 from find_group import choose_group
+from api_token import BOT_TOKEN 
 
 
-bot_token = "6497800204:AAFzMDXRKLX6DmYeaWIhYKSrTksTj1fQwaM"  # Replace YOUR_TOKEN_HERE with your actual bot token
+bot_token = BOT_TOKEN
 bot = telebot.TeleBot(bot_token)
-
-
 
 data = []
 msg_txt = ''
@@ -88,5 +85,3 @@ def on_day_group_selected(call):
         bot.send_message(call.message.chat.id, text=f"The data is:\n{current_data_string}", reply_markup=markup)
 
 bot.polling()
-
-#DSA
