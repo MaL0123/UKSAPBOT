@@ -80,7 +80,7 @@ def on_day_group_selected(call):
     else:
         global msg_txt
         sheet_name = msg_txt
-        r_num = int(call.data) - 1 + 1
+        r_num = int(call.data)
         data = read_excel_file(FILE_PATH, sheet_name)
         current_data = data[r_num] 
         current_data_string = "\n\n".join(map(str, current_data))
