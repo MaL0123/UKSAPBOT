@@ -4,6 +4,7 @@ import telebot
 from telebot import types
 from openpyxl import load_workbook
 import groups
+from groupsButton import *
 
 
 bot_token = "6497800204:AAFzMDXRKLX6DmYeaWIhYKSrTksTj1fQwaM"  # Replace YOUR_TOKEN_HERE with your actual bot token
@@ -64,7 +65,7 @@ def onegroup(message):
     buttons = groups.buttons_course_2
     markup = types.InlineKeyboardMarkup()
     for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 21))
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 22))
         markup.add(button)
 
     bot.send_message(message.chat.id, text="Выбери свою группу 2 курса", reply_markup=markup)
@@ -86,9 +87,8 @@ def onegroup(message):
     buttons = groups.buttons_course_4
     markup = types.InlineKeyboardMarkup()
     for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 63))
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 64))
         markup.add(button)
-        print(index + 63) 
 
     bot.send_message(message.chat.id, text="Выбери свою группу 4 курса", reply_markup=markup)
 
@@ -98,7 +98,7 @@ def onegroup(message):
     buttons = groups.buttons_course_5
     markup = types.InlineKeyboardMarkup()
     for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 77))
+        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 78))
         markup.add(button)
 
     bot.send_message(message.chat.id, text="Выбери свою группу 5 курса", reply_markup=markup)
