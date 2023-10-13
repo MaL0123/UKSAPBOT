@@ -5,6 +5,7 @@ from telebot import types
 from openpyxl import load_workbook
 import groups
 from groupsButton import *
+from find_group import choose_group
 
 
 bot_token = "6497800204:AAFzMDXRKLX6DmYeaWIhYKSrTksTj1fQwaM"  # Replace YOUR_TOKEN_HERE with your actual bot token
@@ -51,57 +52,23 @@ def select_course(message):
 
 @bot.message_handler(func=lambda message: message.text == "1 курс")
 def onegroup(message):
-    buttons = groups.buttons_course_1
-    markup = types.InlineKeyboardMarkup()
-    for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index))
-        markup.add(button)
-
-    bot.send_message(message.chat.id, text="Выбери свою группу 1 курса", reply_markup=markup)
+    choose_group(message, types, groups.buttons_course_1, bot, 0)
 
 @bot.message_handler(func=lambda message: message.text == "2 курс")
 def onegroup(message):
-
-    buttons = groups.buttons_course_2
-    markup = types.InlineKeyboardMarkup()
-    for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 22))
-        markup.add(button)
-
-    bot.send_message(message.chat.id, text="Выбери свою группу 2 курса", reply_markup=markup)
+    choose_group(message, types, groups.buttons_course_2, bot, 22)
 
 @bot.message_handler(func=lambda message: message.text == "3 курс")
 def onegroup(message):
-
-    buttons = groups.buttons_course_3
-    markup = types.InlineKeyboardMarkup()
-    for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 43))
-        markup.add(button)
-
-    bot.send_message(message.chat.id, text="Выбери свою группу 3 курса", reply_markup=markup)
+    choose_group(message, types, groups.buttons_course_3, bot, 43)
 
 @bot.message_handler(func=lambda message: message.text == "4 курс")
 def onegroup(message):
-
-    buttons = groups.buttons_course_4
-    markup = types.InlineKeyboardMarkup()
-    for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 64))
-        markup.add(button)
-
-    bot.send_message(message.chat.id, text="Выбери свою группу 4 курса", reply_markup=markup)
+    choose_group(message, types, groups.buttons_course_4, bot, 64)
 
 @bot.message_handler(func=lambda message: message.text == "5 курс")
 def onegroup(message):
-
-    buttons = groups.buttons_course_5
-    markup = types.InlineKeyboardMarkup()
-    for index, button_text in enumerate(buttons, start=1):
-        button = types.InlineKeyboardButton(button_text, callback_data=str(index + 78))
-        markup.add(button)
-
-    bot.send_message(message.chat.id, text="Выбери свою группу 5 курса", reply_markup=markup)
+    choose_group(message, types, groups.buttons_course_5, bot, 78)
 
 @bot.callback_query_handler(func=lambda call: True)
 def on_day_group_selected(call):
@@ -111,7 +78,8 @@ def on_day_group_selected(call):
         global msg_txt
         sheet_name = msg_txt
         r_num = int(call.data) - 1 + 1
-        data = read_excel_file('C:\\Users\\Observer\\Desktop\\uksap_bot\\UKSAPBOT\\rasp.xlsx', sheet_name)
+        #data = read_excel_file('C:\\Users\\Observer\\Desktop\\uksap_bot\\UKSAPBOT\\rasp.xlsx', sheet_name)
+        data = read_excel_file('C:\\Users\\Vlad\\Desktop\\UKSAPBOT\\rasp.xlsx', sheet_name)
         current_data = data[r_num] 
         current_data_string = "\n\n".join(map(str, current_data))
         back_button = types.InlineKeyboardButton("Back", callback_data="back")
