@@ -2,7 +2,6 @@ import telebot
 from telebot import types
 from openpyxl import load_workbook
 import groups
-from groupsButton import *
 from find_info import choose_group, choose_day
 from api_token import BOT_TOKEN, FILE_PATH
 
@@ -12,6 +11,8 @@ bot = telebot.TeleBot(bot_token)
 
 data = []
 days = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
+courses = ["1 курс", "2 курс", "3 курс", "4 курс", "5 курс"]
+first_course = ["2 курс", "3 курс", "4 курс", "5 курс"]
 msg_txt = ''
 
 def read_excel_file(file_path, sheet_name):
@@ -41,22 +42,22 @@ def start(message):
 def select_course(message):
     global msg_txt
     if message.text == "понедельник":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, courses)
         msg_txt = message.text
     elif message.text == "вторник":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, courses)
         msg_txt = message.text
     elif message.text == "среда":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, courses)
         msg_txt = message.text
     elif message.text == "четверг":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, courses)
         msg_txt = message.text
     elif message.text == "пятница":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, courses)
         msg_txt = message.text    
     elif message.text == "суббота":
-        choose_day(message, types, bot)
+        choose_day(message, types, bot, first_course)
         msg_txt = message.text
 
 @bot.message_handler(func=lambda message: message.text)
