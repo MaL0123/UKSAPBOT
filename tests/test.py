@@ -6,3 +6,5 @@ def marker():
 
 def something():
     print('something')
+    print('mama')
+    print('sheesh')
