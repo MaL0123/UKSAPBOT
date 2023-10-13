@@ -3,6 +3,7 @@ def hell_yeah():
 
 def marker():
     print('marker')
+    print("loh")
 
 def something():
     print('something')
