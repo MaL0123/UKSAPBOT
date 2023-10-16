@@ -87,6 +87,6 @@ def on_day_group_selected(call):
         back_button = types.InlineKeyboardButton("Назад", callback_data="back")
         markup = types.InlineKeyboardMarkup()
         markup.row(back_button)
-        bot.send_message(call.message.chat.id, text=f"The data is:\n{current_data_string}", reply_markup=markup)
+        bot.send_message(call.message.chat.id, text=f"Вот твоё расписани\n(первая строчка: \nпреподователь и название пары\nвторая строчка: кабинет\nтреться строчка: время пары):\n{current_data_string}", reply_markup=markup)
 
 bot.polling()
